@@ -114,6 +114,7 @@ $userEnvironmentKey = 'Registry::HKLM\SYSTEM\CurrentControlSet\Control\Session M
 $m2_home = (Get-ItemProperty -Path $userEnvironmentKey -Name M2_HOME).M2_HOME
 $m2 = $m2_home + '\bin'
 $maven_opts = '-Xms256m'
+$java_opts = '-Xms256m -Xmx512m'
 
 $m2_repo = 'C:\ProgramData\m2'
 New-Item -Path $m2_repo -ItemType Directory -Force
@@ -121,6 +122,7 @@ New-Item -Path $m2_repo -ItemType Directory -Force
 setx M2 $m2 /M
 setx M2_REPO $m2_repo /M
 setx MAVEN_OPTS $maven_opts /M
+setx JAVA_OPTS $java_opts /M
 
 # Download cobertura jars
 $uri = 'https://downloads.sourceforge.net/project/cobertura/cobertura/2.1.1/cobertura-2.1.1-bin.zip'
